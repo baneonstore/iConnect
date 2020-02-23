@@ -117,10 +117,12 @@ class Detect(object):
         except WiFiNotFound as err:
             return code[err.code]
 
-
+    # TODO: Implement
+    # <BANEON 2020-02-04 d:1w p:2>
     def enable_device(self):
         pass
 
-
+    # TODO: Implement
+    # <BANEON 2020-02-04 d:1w p:2>
     def disable_device(self):
         pass
