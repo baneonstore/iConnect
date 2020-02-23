@@ -1,5 +1,5 @@
 # Copyright © 2020 baneon - MIT License
-# See`LICENSE.md` included in the source distribution for details
+# See`LICENSE` included in the source distribution for details
 
 
 import shlex
@@ -12,7 +12,8 @@ from .Code import code
 class Detect(object):
     """docstring for ."""
 
-
+    # TODO: You need to take arguments
+    # <BANEON 2020-02-04 d:2w p:1>
     def __init__(self):
         pass
 
@@ -24,7 +25,7 @@ class Detect(object):
         possible execution errors
 
         Args:
-            rule (str): command-line nmcli
+            rule (str): command-line for nmcli
 
         Returns:
             tuple: It contains a list and the return value
@@ -75,8 +76,8 @@ class Detect(object):
             tuple: It contains a list and the return value
 
         Raises:
-        WiFiNotFound: It is launched when it does not detect available Wi-Fi
-                      networks
+            WiFiNotFound: It is launched when it does not detect available Wi-Fi
+                          networks
 
         """
 
@@ -91,13 +92,30 @@ class Detect(object):
 
 
     def show_connection_active(self):
+        """Shows the active connection.
+
+        Returns:
+            tuple: It contains a list and the return value
+
+        # DOCDO: Incorrect documentation
+        # <BANEON 2020-02-04 d:1w p:1>
+        Raises:
+            WiFiNotFound: It is launched when it does not detect available Wi-Fi
+                          networks
+
+        """
+
         try:
             response = self.run_command(
                 'nmcli -t -f NAME connection show --active')
             if response[0]:
                 return response
-        except:
-            pass
+            else:
+                # TODO: You need your own exception
+                # <BANEON 2020-02-04 d:1w p:2>
+                raise WiFiNotFound(146)
+        except WiFiNotFound as err:
+            return code[err.code]
 
 
     def enable_device(self):
