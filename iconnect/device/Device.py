@@ -117,12 +117,33 @@ class Detect(object):
         except WiFiNotFound as err:
             return code[err.code]
 
-    # TODO: Implement
+    # TODOC: Add documentation
     # <BANEON 2020-02-04 d:1w p:2>
-    def enable_device(self):
-        pass
+    def enable_device(self, device):
+        try:
+            response = sef.run_command(
+                'nmcli dev set {} managed on'.format(device))
+            if response[0]:
+                return response
+            else:
+                raise DeviceNotFound(143)
+        except DeviceNotFound as err:
+            return code[err.code]
+
+    # TODOC: Add documentation
+    # <BANEON 2020-02-04 d:1w p:2>
+    def disable_device(self, device):
+        try:
+            response = sef.run_command(
+                'nmcli dev set {} managed off'.format(device))
+            if response[0]:
+                return response
+            else:
+                raise DeviceNotFound(143)
+        except DeviceNotFound as err:
+            return code[err.code]
 
     # TODO: Implement
     # <BANEON 2020-02-04 d:1w p:2>
-    def disable_device(self):
+    def connect(self):
         pass

@@ -1,5 +1,5 @@
 # Copyright © 2020 baneon - MIT License
-# See `LICENSE.md` included in the source distribution for details.
+# See `LICENSE` included in the source distribution for details.
 
 
 class DeviceExceptions(Exception):
@@ -21,7 +21,7 @@ class DeviceNotFound(DeviceExceptions):
 
     def __init__(self, code):
         super(DeviceNotFound, self).__init__()
-        errors = 144
+        errors = (143, 144)
         self.code = self.validate_code(errors, code)
 
 
@@ -30,5 +30,5 @@ class WiFiNotFound(DeviceExceptions):
 
     def __init__(self, code):
         super(WiFiNotFound, self).__init__()
-        errors = 145
+        errors = (145, 146)
         self.code = self.validate_code(errors, code)
