@@ -121,7 +121,7 @@ class Detect(object):
     # <BANEON 2020-02-04 d:1w p:2>
     def enable_device(self, device):
         try:
-            response = sef.run_command(
+            response = self.run_command(
                 'nmcli dev set {} managed on'.format(device))
             if response[0]:
                 return response
@@ -134,7 +134,7 @@ class Detect(object):
     # <BANEON 2020-02-04 d:1w p:2>
     def disable_device(self, device):
         try:
-            response = sef.run_command(
+            response = self.run_command(
                 'nmcli dev set {} managed off'.format(device))
             if response[0]:
                 return response
